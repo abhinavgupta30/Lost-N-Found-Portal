@@ -3,52 +3,101 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp"
-    android:gravity="center"
-    android:background="#FFF5F5">
+    android:background="#FFFFFF">
 
     <TextView
         android:id="@+id/tv1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="NMIMS SHIRPUR"
-        android:textSize="26sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="#FFFFFF"
         android:gravity="center"
-        android:background="#B5121B"
-        android:padding="22dp" />
+        android:background="#8F2424"
+        android:padding="24dp" />
 
-    <TextView
-        android:id="@+id/tv2"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Lost N Found Portal"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="#B5121B"
-        android:gravity="center"
-        android:layout_marginTop="35dp"
-        android:layout_marginBottom="25dp" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="24dp">
 
-    <Button
-        android:id="@+id/btnLostItems"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="View Lost Items" />
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lost N Found Portal"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#8F2424"
+            android:gravity="center"
+            android:layout_marginTop="20dp" />
 
-    <Button
-        android:id="@+id/btnFoundItems"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="View Found Items"
-        android:layout_marginTop="12dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Find what is lost. Return what is found."
+            android:textSize="15sp"
+            android:textColor="#555555"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="28dp" />
 
-    <Button
-        android:id="@+id/btnReportItem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Report an Item"
-        android:layout_marginTop="12dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="What would you like to do?"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#292929"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/btnLostItems"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:text="View Lost Items"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:backgroundTint="#8F2424" />
+
+        <Button
+            android:id="@+id/btnFoundItems"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="12dp"
+            android:text="View Found Items"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:backgroundTint="#8F2424" />
+
+        <Button
+            android:id="@+id/btnReportItem"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="12dp"
+            android:text="Report an Item"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:backgroundTint="#701B1B" />
+
+        <Button
+            android:id="@+id/btnSearchItems"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="12dp"
+            android:text="Search Items"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:backgroundTint="#8F2424" />
+
+    </LinearLayout>
 
 </LinearLayout>

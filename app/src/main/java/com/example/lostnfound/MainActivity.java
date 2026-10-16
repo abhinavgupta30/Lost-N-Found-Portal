@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnLostItems, btnFoundItems, btnReportItem;
+    Button btnLostItems, btnFoundItems, btnReportItem, btnSearchItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,19 +17,37 @@ public class MainActivity extends AppCompatActivity {
         btnLostItems = findViewById(R.id.btnLostItems);
         btnFoundItems = findViewById(R.id.btnFoundItems);
         btnReportItem = findViewById(R.id.btnReportItem);
+        btnSearchItems = findViewById(R.id.btnSearchItems);
 
         btnLostItems.setOnClickListener(v -> {
-            Intent i = new Intent(MainActivity.this, LostItemsActivity.class);
+            Intent i = new Intent(
+                    MainActivity.this,
+                    LostItemsActivity.class
+            );
             startActivity(i);
         });
 
         btnFoundItems.setOnClickListener(v -> {
-            Intent i = new Intent(MainActivity.this, FoundItemsActivity.class);
+            Intent i = new Intent(
+                    MainActivity.this,
+                    FoundItemsActivity.class
+            );
             startActivity(i);
         });
 
         btnReportItem.setOnClickListener(v -> {
-            Intent i = new Intent(MainActivity.this, AddItemActivity.class);
+            Intent i = new Intent(
+                    MainActivity.this,
+                    AddItemActivity.class
+            );
+            startActivity(i);
+        });
+
+        btnSearchItems.setOnClickListener(v -> {
+            Intent i = new Intent(
+                    MainActivity.this,
+                    SearchActivity.class
+            );
             startActivity(i);
         });
     }
