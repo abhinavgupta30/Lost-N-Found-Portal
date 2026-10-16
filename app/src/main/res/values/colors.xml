@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="nmims_red">#B5121B</color>
-    <color name="dark_red">#8F0E15</color>
-    <color name="light_red">#FCE8E9</color>
+    <!-- NMIMS maroon theme -->
+    <color name="nmims_red">#8F2424</color>
+    <color name="nmims_dark_red">#701B1B</color>
+    <color name="nmims_light_red">#F7EEEE</color>
 
+    <!-- Background colours -->
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
-    <color name="dark_text">#222222</color>
-    <color name="gray">#777777</color>
-    <color name="light_gray">#EEEEEE</color>
+
+    <!-- Text colours -->
+    <color name="nmims_text">#292929</color>
+    <color name="dark_text">#292929</color>
+    <color name="nmims_grey">#757575</color>
+
+    <!-- Borders -->
+    <color name="nmims_border">#E0E0E0</color>
+
+    <!-- Compatibility with existing project theme -->
+    <color name="dark_red">#701B1B</color>
+    <color name="purple_200">#F7EEEE</color>
+    <color name="purple_500">#8F2424</color>
+    <color name="purple_700">#701B1B</color>
+    <color name="teal_200">#F7EEEE</color>
+    <color name="teal_700">#8F2424</color>
 
 </resources>
