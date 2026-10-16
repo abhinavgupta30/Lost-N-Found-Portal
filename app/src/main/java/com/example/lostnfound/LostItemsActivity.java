@@ -1,6 +1,5 @@
-
 package com.example.lostnfound;
-
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -8,7 +7,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -42,20 +40,25 @@ public class LostItemsActivity extends AppCompatActivity {
 
         lv1.setAdapter(adapter);
 
-        loadItems();
-
         bt1.setOnClickListener(v -> finish());
 
         lv1.setOnItemClickListener((parent, view, position, id) -> {
             int itemId = ids.get(position);
-            Toast.makeText(this, "Selected Item ID: " + itemId,
-                    Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(
+                    LostItemsActivity.this,
+                    ItemDetailsActivity.class
+            );
+
+            intent.putExtra("itemId", itemId);
+            startActivity(intent);
         });
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+
         if (db != null && list != null) {
             loadItems();
         }
@@ -80,6 +83,7 @@ public class LostItemsActivity extends AppCompatActivity {
             String status = c.getString(4);
 
             ids.add(id);
+
             list.add(name + "\nCategory: " + category
                     + "\nLocation: " + location
                     + "\nStatus: " + status);
