@@ -1,4 +1,5 @@
 package com.example.lostnfound;
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -12,9 +13,10 @@ public class ItemDetailsActivity extends AppCompatActivity {
 
     TextView tvItemName, tvDescription, tvCategory, tvLocation;
     TextView tvDate, tvType, tvContact, tvStatus;
-    Button btnBack;
+    Button btnBack, btnResolve;
 
     DBHelper db;
+    int itemId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,48 +31,104 @@ public class ItemDetailsActivity extends AppCompatActivity {
         tvType = findViewById(R.id.tvType);
         tvContact = findViewById(R.id.tvContact);
         tvStatus = findViewById(R.id.tvStatus);
+
         btnBack = findViewById(R.id.btnBack);
+        btnResolve = findViewById(R.id.btnResolve);
 
         db = new DBHelper(this);
 
-        int itemId = getIntent().getIntExtra("itemId", -1);
+        itemId = getIntent().getIntExtra("itemId", -1);
 
         if (itemId != -1) {
             loadItemDetails(itemId);
         } else {
-            Toast.makeText(this, "Item not found", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Item not found",
+                    Toast.LENGTH_SHORT).show();
             finish();
+            return;
         }
 
         btnBack.setOnClickListener(v -> finish());
+
+        btnResolve.setOnClickListener(v -> markResolved());
     }
 
-    private void loadItemDetails(int itemId) {
+    private void loadItemDetails(int id) {
 
         SQLiteDatabase database = db.getReadableDatabase();
 
         Cursor cursor = database.rawQuery(
                 "SELECT item_name, description, category, location, date, type, contact, status " +
                         "FROM Items WHERE id = ?",
-                new String[]{String.valueOf(itemId)}
+                new String[]{String.valueOf(id)}
         );
 
-        if (cursor.moveToFirst()) {
+        try {
+            if (cursor.moveToFirst()) {
 
-            tvItemName.setText("Item Name: " + cursor.getString(0));
-            tvDescription.setText("Description: " + cursor.getString(1));
-            tvCategory.setText("Category: " + cursor.getString(2));
-            tvLocation.setText("Location: " + cursor.getString(3));
-            tvDate.setText("Date: " + cursor.getString(4));
-            tvType.setText("Type: " + cursor.getString(5));
-            tvContact.setText("Contact: " + cursor.getString(6));
-            tvStatus.setText("Status: " + cursor.getString(7));
+                tvItemName.setText("Item Name: " + cursor.getString(0));
+                tvDescription.setText("Description: " + cursor.getString(1));
+                tvCategory.setText("Category: " + cursor.getString(2));
+                tvLocation.setText("Location: " + cursor.getString(3));
+                tvDate.setText("Date: " + cursor.getString(4));
+                tvType.setText("Type: " + cursor.getString(5));
+                tvContact.setText("Contact: " + cursor.getString(6));
 
-        } else {
-            Toast.makeText(this, "Item details not available", Toast.LENGTH_SHORT).show();
-            finish();
+                String status = cursor.getString(7);
+
+                if (status == null) {
+                    status = "Pending";
+                }
+
+                tvStatus.setText("Status: " + status);
+
+                if (status.equalsIgnoreCase("Resolved")) {
+                    btnResolve.setEnabled(false);
+                    btnResolve.setText("Already Resolved");
+                } else {
+                    btnResolve.setEnabled(true);
+                    btnResolve.setText("Mark Resolved");
+                }
+
+            } else {
+                Toast.makeText(this, "Item details not available",
+                        Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        } finally {
+            cursor.close();
+            database.close();
+        }
+    }
+
+    private void markResolved() {
+
+        SQLiteDatabase database = db.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("status", "Resolved");
+
+        int result;
+
+        try {
+            result = database.update(
+                    "Items",
+                    values,
+                    "id = ?",
+                    new String[]{String.valueOf(itemId)}
+            );
+        } finally {
+            database.close();
         }
 
-        cursor.close();
+        if (result > 0) {
+            Toast.makeText(this, "Item marked as resolved",
+                    Toast.LENGTH_SHORT).show();
+
+            loadItemDetails(itemId);
+        } else {
+            Toast.makeText(this, "Unable to update item status",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 }
