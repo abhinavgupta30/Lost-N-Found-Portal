@@ -1,3 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Lost N Found</string>
+    <string name="search_title">SEARCH ITEMS</string>
+    <string name="enter_item_name">Enter Item Name</string>
+    <string name="search_hint">Example: Wallet, Phone, ID Card</string>
+    <string name="select_category">Select Category</string>
+    <string name="search_button">Search</string>
+    <string name="no_matching_items">No matching items found.</string>
+    <string name="back_button">Back</string>
+    <string name="item_details_title">Item Details</string>
+    <string name="item_name_label">Item Name</string>
+    <string name="description_label">Description</string>
+    <string name="category_label">Category</string>
+    <string name="location_label">Location</string>
+    <string name="date_label">Date</string>
+    <string name="type_label">Type</string>
+    <string name="contact_label">Contact</string>
+    <string name="status_label">Status</string>
 </resources>
