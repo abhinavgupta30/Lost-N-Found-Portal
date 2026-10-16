@@ -81,6 +81,7 @@ public class SearchActivity extends AppCompatActivity {
         btBack.setOnClickListener(v -> finish());
 
         lv1.setOnItemClickListener((parent, view, position, id) -> {
+
             int itemId = ids.get(position);
 
             Intent intent = new Intent(
@@ -105,6 +106,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void searchItems() {
+
         list.clear();
         ids.clear();
 
@@ -117,11 +119,14 @@ public class SearchActivity extends AppCompatActivity {
         String[] arguments;
 
         if (category.equals("All Categories")) {
+
             query = "SELECT id, item_name, category, location, status " +
                     "FROM Items WHERE item_name LIKE ? ORDER BY id DESC";
 
             arguments = new String[]{"%" + searchText + "%"};
+
         } else {
+
             query = "SELECT id, item_name, category, location, status " +
                     "FROM Items WHERE item_name LIKE ? AND category = ? " +
                     "ORDER BY id DESC";
@@ -132,24 +137,35 @@ public class SearchActivity extends AppCompatActivity {
             };
         }
 
-        Cursor c = database.rawQuery(query, arguments);
+        Cursor cursor = null;
 
-        while (c.moveToNext()) {
-            int id = c.getInt(0);
-            String name = c.getString(1);
-            String itemCategory = c.getString(2);
-            String location = c.getString(3);
-            String status = c.getString(4);
+        try {
+            cursor = database.rawQuery(query, arguments);
 
-            ids.add(id);
+            while (cursor.moveToNext()) {
 
-            list.add(name
-                    + "\nCategory: " + itemCategory
-                    + "\nLocation: " + location
-                    + "\nStatus: " + status);
+                int id = cursor.getInt(0);
+                String name = cursor.getString(1);
+                String itemCategory = cursor.getString(2);
+                String location = cursor.getString(3);
+                String status = cursor.getString(4);
+
+                ids.add(id);
+
+                list.add(name
+                        + "\nCategory: " + itemCategory
+                        + "\nLocation: " + location
+                        + "\nStatus: " + status);
+            }
+
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+
+            database.close();
         }
 
-        c.close();
         adapter.notifyDataSetChanged();
 
         if (list.isEmpty()) {
