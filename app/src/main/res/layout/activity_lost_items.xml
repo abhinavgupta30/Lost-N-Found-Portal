@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#FFF5F5">
+    android:padding="18dp"
+    android:background="#FFFFFF">
 
     <TextView
         android:id="@+id/tv1"
@@ -15,27 +15,28 @@
         android:textStyle="bold"
         android:textColor="#FFFFFF"
         android:gravity="center"
-        android:background="#B5121B"
-        android:padding="18dp" />
+        android:background="#8F2424"
+        android:padding="20dp" />
 
     <TextView
         android:id="@+id/tv2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Lost Items"
-        android:textSize="25sp"
+        android:textSize="26sp"
         android:textStyle="bold"
-        android:textColor="#B5121B"
-        android:layout_marginTop="20dp" />
+        android:textColor="#8F2424"
+        android:layout_marginTop="22dp" />
 
     <TextView
         android:id="@+id/tv3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="No lost items found"
+        android:textColor="#666666"
         android:gravity="center"
         android:textSize="16sp"
-        android:padding="20dp"
+        android:padding="24dp"
         android:visibility="gone" />
 
     <ListView
@@ -43,12 +44,19 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="12dp"
+        android:divider="#E0E0E0"
+        android:dividerHeight="1dp"
+        android:background="#FFFFFF" />
 
     <Button
         android:id="@+id/bt1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Back to Home" />
+        android:layout_height="54dp"
+        android:text="Back to Home"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textAllCaps="false"
+        android:backgroundTint="#8F2424" />
 
 </LinearLayout>

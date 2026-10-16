@@ -36,7 +36,10 @@ public class LostItemsActivity extends AppCompatActivity {
         ids = new ArrayList<>();
 
         adapter = new ArrayAdapter<>(
-                this, android.R.layout.simple_list_item_1, list);
+                this,
+                android.R.layout.simple_list_item_1,
+                list
+        );
 
         lv1.setAdapter(adapter);
 
@@ -73,23 +76,28 @@ public class LostItemsActivity extends AppCompatActivity {
         Cursor c = database.rawQuery(
                 "SELECT id, item_name, category, location, status " +
                         "FROM Items WHERE type=? ORDER BY id DESC",
-                new String[]{"Lost"});
+                new String[]{"Lost"}
+        );
 
-        while (c.moveToNext()) {
-            int id = c.getInt(0);
-            String name = c.getString(1);
-            String category = c.getString(2);
-            String location = c.getString(3);
-            String status = c.getString(4);
+        try {
+            while (c.moveToNext()) {
+                int id = c.getInt(0);
+                String name = c.getString(1);
+                String category = c.getString(2);
+                String location = c.getString(3);
+                String status = c.getString(4);
 
-            ids.add(id);
+                ids.add(id);
 
-            list.add(name + "\nCategory: " + category
-                    + "\nLocation: " + location
-                    + "\nStatus: " + status);
+                list.add(name + "\nCategory: " + category
+                        + "\nLocation: " + location
+                        + "\nStatus: " + status);
+            }
+        } finally {
+            c.close();
+            database.close();
         }
 
-        c.close();
         adapter.notifyDataSetChanged();
 
         if (list.isEmpty()) {
