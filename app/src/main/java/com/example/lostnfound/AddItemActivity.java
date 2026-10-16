@@ -9,8 +9,12 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.Calendar;
+import java.util.Locale;
+
 public class AddItemActivity extends AppCompatActivity {
 
     EditText etItemName, etDescription, etLocation, etContact;
@@ -30,6 +34,7 @@ public class AddItemActivity extends AppCompatActivity {
         etDescription = findViewById(R.id.etDescription);
         etLocation = findViewById(R.id.etLocation);
         etContact = findViewById(R.id.etContact);
+
         spCategory = findViewById(R.id.spCategory);
         btnDate = findViewById(R.id.btnDate);
         btnSubmit = findViewById(R.id.btnSubmit);
@@ -65,21 +70,24 @@ public class AddItemActivity extends AppCompatActivity {
     }
 
     private void selectDate() {
-        Calendar c = Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance();
 
         DatePickerDialog dialog = new DatePickerDialog(
                 this,
                 (view, year, month, day) -> {
                     date = String.format(
-                            java.util.Locale.getDefault(),
+                            Locale.getDefault(),
                             "%02d/%02d/%04d",
-                            day, month + 1, year
+                            day,
+                            month + 1,
+                            year
                     );
+
                     btnDate.setText(date);
                 },
-                c.get(Calendar.YEAR),
-                c.get(Calendar.MONTH),
-                c.get(Calendar.DAY_OF_MONTH)
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
         );
 
         dialog.show();
@@ -88,7 +96,6 @@ public class AddItemActivity extends AppCompatActivity {
     private void saveItem() {
         String name = etItemName.getText().toString().trim();
         String description = etDescription.getText().toString().trim();
-        String category = spCategory.getSelectedItem().toString();
         String location = etLocation.getText().toString().trim();
         String contact = etContact.getText().toString().trim();
 
@@ -111,11 +118,18 @@ public class AddItemActivity extends AppCompatActivity {
             return;
         }
 
+        int selectedType = radioGroupType.getCheckedRadioButtonId();
+
         String type;
-        if (radioGroupType.getCheckedRadioButtonId() == R.id.radioLost) {
+
+        if (selectedType == R.id.radioLost) {
             type = "Lost";
-        } else {
+        } else if (selectedType == R.id.radioFound) {
             type = "Found";
+        } else {
+            Toast.makeText(this, "Please select Lost or Found",
+                    Toast.LENGTH_SHORT).show();
+            return;
         }
 
         SQLiteDatabase database = db.getWritableDatabase();
@@ -123,7 +137,7 @@ public class AddItemActivity extends AppCompatActivity {
         ContentValues values = new ContentValues();
         values.put("item_name", name);
         values.put("description", description);
-        values.put("category", category);
+        values.put("category", spCategory.getSelectedItem().toString());
         values.put("location", location);
         values.put("date", date);
         values.put("type", type);
@@ -140,5 +154,7 @@ public class AddItemActivity extends AppCompatActivity {
             Toast.makeText(this, "Failed to save item",
                     Toast.LENGTH_SHORT).show();
         }
+
+        database.close();
     }
 }
