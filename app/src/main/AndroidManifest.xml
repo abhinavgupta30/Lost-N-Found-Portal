@@ -12,6 +12,15 @@
         android:theme="@style/Theme.LostNFound">
 
         <activity
+            android:name=".ItemDetailsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".SearchActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
             android:name=".AddItemActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
