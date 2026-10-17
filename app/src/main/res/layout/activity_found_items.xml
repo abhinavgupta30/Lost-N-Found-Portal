@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
+
+        <!-- NMIMS Header -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/nmims_red"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="@string/main_title"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <!-- Screen Title -->
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="@string/acknowledge_found_item"
+            android:textColor="@color/dark_text"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Instructions -->
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="@string/found_items_instruction"
+            android:textColor="@color/gray"
+            android:textSize="16sp" />
+
+        <!-- Empty List Message -->
+        <TextView
+            android:id="@+id/tv3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="@string/no_found_items"
+            android:textColor="@color/gray"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+        <!-- Found Items List -->
+        <ListView
+            android:id="@+id/lv1"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_marginTop="16dp"
+            android:divider="#DDDDDD"
+            android:dividerHeight="1dp" />
+
+        <!-- Back Button -->
+        <Button
+            android:id="@+id/bt1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/nmims_red"
+            android:text="@string/back"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+</ScrollView>
