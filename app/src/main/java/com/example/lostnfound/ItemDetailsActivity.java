@@ -2,8 +2,10 @@ package com.example.lostnfound;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +15,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
 
     TextView tvItemName, tvDescription, tvCategory, tvLocation;
     TextView tvDate, tvType, tvContact, tvStatus;
+    ImageView imgItemPhoto;
     Button btnBack, btnResolve;
 
     DBHelper db;
@@ -31,6 +34,8 @@ public class ItemDetailsActivity extends AppCompatActivity {
         tvType = findViewById(R.id.tvType);
         tvContact = findViewById(R.id.tvContact);
         tvStatus = findViewById(R.id.tvStatus);
+
+        imgItemPhoto = findViewById(R.id.imgItemPhoto);
 
         btnBack = findViewById(R.id.btnBack);
         btnResolve = findViewById(R.id.btnResolve);
@@ -58,7 +63,8 @@ public class ItemDetailsActivity extends AppCompatActivity {
         SQLiteDatabase database = db.getReadableDatabase();
 
         Cursor cursor = database.rawQuery(
-                "SELECT item_name, description, category, location, date, type, contact, status " +
+                "SELECT item_name, description, category, location, " +
+                        "date, type, contact, status, image_uri " +
                         "FROM Items WHERE id = ?",
                 new String[]{String.valueOf(id)}
         );
@@ -76,11 +82,24 @@ public class ItemDetailsActivity extends AppCompatActivity {
 
                 String status = cursor.getString(7);
 
-                if (status == null) {
+                if (status == null || status.isEmpty()) {
                     status = "Pending";
                 }
 
                 tvStatus.setText("Status: " + status);
+
+                String imageUriString = cursor.getString(8);
+
+                if (imageUriString != null && !imageUriString.isEmpty()) {
+                    try {
+                        imgItemPhoto.setImageURI(Uri.parse(imageUriString));
+                        imgItemPhoto.setVisibility(ImageView.VISIBLE);
+                    } catch (Exception e) {
+                        imgItemPhoto.setVisibility(ImageView.GONE);
+                    }
+                } else {
+                    imgItemPhoto.setVisibility(ImageView.GONE);
+                }
 
                 if (status.equalsIgnoreCase("Resolved")) {
                     btnResolve.setEnabled(false);

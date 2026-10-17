@@ -24,9 +24,12 @@ public class SearchActivity extends AppCompatActivity {
     TextView tvMessage;
 
     DBHelper db;
+
     ArrayList<String> list;
     ArrayList<Integer> ids;
-    ArrayAdapter<String> adapter;
+    ArrayList<String> imageUris;
+
+    ItemListAdapter adapter;
 
     String[] categories = {
             "All Categories",
@@ -55,6 +58,7 @@ public class SearchActivity extends AppCompatActivity {
 
         list = new ArrayList<>();
         ids = new ArrayList<>();
+        imageUris = new ArrayList<>();
 
         ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(
                 this,
@@ -68,12 +72,7 @@ public class SearchActivity extends AppCompatActivity {
 
         spCategory.setAdapter(categoryAdapter);
 
-        adapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_list_item_1,
-                list
-        );
-
+        adapter = new ItemListAdapter(this, list, imageUris);
         lv1.setAdapter(adapter);
 
         btSearch.setOnClickListener(v -> searchItems());
@@ -109,6 +108,7 @@ public class SearchActivity extends AppCompatActivity {
 
         list.clear();
         ids.clear();
+        imageUris.clear();
 
         String searchText = etSearch.getText().toString().trim();
         String category = spCategory.getSelectedItem().toString();
@@ -120,14 +120,14 @@ public class SearchActivity extends AppCompatActivity {
 
         if (category.equals("All Categories")) {
 
-            query = "SELECT id, item_name, category, location, status " +
+            query = "SELECT id, item_name, category, location, status, image_uri " +
                     "FROM Items WHERE item_name LIKE ? ORDER BY id DESC";
 
             arguments = new String[]{"%" + searchText + "%"};
 
         } else {
 
-            query = "SELECT id, item_name, category, location, status " +
+            query = "SELECT id, item_name, category, location, status, image_uri " +
                     "FROM Items WHERE item_name LIKE ? AND category = ? " +
                     "ORDER BY id DESC";
 
@@ -149,6 +149,11 @@ public class SearchActivity extends AppCompatActivity {
                 String itemCategory = cursor.getString(2);
                 String location = cursor.getString(3);
                 String status = cursor.getString(4);
+                String imageUri = cursor.getString(5);
+
+                if (status == null || status.isEmpty()) {
+                    status = "Pending";
+                }
 
                 ids.add(id);
 
@@ -156,6 +161,8 @@ public class SearchActivity extends AppCompatActivity {
                         + "\nCategory: " + itemCategory
                         + "\nLocation: " + location
                         + "\nStatus: " + status);
+
+                imageUris.add(imageUri);
             }
 
         } finally {

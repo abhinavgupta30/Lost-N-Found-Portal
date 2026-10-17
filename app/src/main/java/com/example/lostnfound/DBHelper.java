@@ -1,5 +1,4 @@
 package com.example.lostnfound;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -9,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "LostFound.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -36,16 +35,16 @@ public class DBHelper extends SQLiteOpenHelper {
                 "date TEXT," +
                 "type TEXT," +
                 "contact TEXT," +
-                "status TEXT)");
+                "status TEXT," +
+                "image_uri TEXT)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        db.execSQL("DROP TABLE IF EXISTS Users");
-        db.execSQL("DROP TABLE IF EXISTS Items");
-
-        onCreate(db);
+        if (oldVersion < 2) {
+            db.execSQL("ALTER TABLE Items ADD COLUMN image_uri TEXT");
+        }
     }
 
     // Register user
@@ -55,7 +54,6 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-
         values.put("name", name);
         values.put("email", email);
         values.put("phone", phone);

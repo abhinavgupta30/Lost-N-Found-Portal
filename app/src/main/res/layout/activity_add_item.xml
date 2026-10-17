@@ -127,6 +127,37 @@
             android:textColor="#8F2424"
             android:backgroundTint="#F7EEEE" />
 
+        <!-- Item photo selection -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Item Photo (Optional)"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#292929"
+            android:layout_marginTop="18dp" />
+
+        <ImageView
+            android:id="@+id/imgItemPreview"
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:layout_marginTop="10dp"
+            android:background="#F7EEEE"
+            android:scaleType="centerInside"
+            android:contentDescription="Selected item photo"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btnChooseImage"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="8dp"
+            android:text="Choose Item Photo"
+            android:textSize="15sp"
+            android:textAllCaps="false"
+            android:textColor="#8F2424"
+            android:backgroundTint="#F7EEEE" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
