@@ -1,3 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- App name -->
     <string name="app_name">Lost N Found</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_title">NMIMS SHIRPUR</string>
+    <string name="dashboard_heading">Lost N Found Portal</string>
+    <string name="dashboard_tagline">Find what is lost. Return what is found.</string>
+    <string name="dashboard_prompt">What would you like to do?</string>
+    <string name="lost_items_button">View Lost Items</string>
+    <string name="found_items_button">View Found Items</string>
+    <string name="report_item_button">Report an Item</string>
+
+    <!-- Search -->
+    <string name="search_title">SEARCH ITEMS</string>
+    <string name="enter_item_name">Enter Item Name</string>
+    <string name="search_hint">Example: Wallet, Phone, ID Card</string>
+    <string name="select_category">Select Category</string>
+    <string name="search_button">Search</string>
+    <string name="no_matching_items">No matching items found.</string>
+
+    <!-- Item details -->
+    <string name="item_details_title">Item Details</string>
+    <string name="item_name_label">Item Name</string>
+    <string name="description_label">Description</string>
+    <string name="category_label">Category</string>
+    <string name="location_label">Location</string>
+    <string name="date_label">Date</string>
+    <string name="type_label">Type</string>
+    <string name="contact_label">Contact</string>
+    <string name="status_label">Status</string>
+
+    <!-- Common buttons -->
+    <string name="back_button">Back</string>
+    <string name="back_to_home">Back to Home</string>
+    <string name="mark_resolved">Mark Resolved</string>
+
+    <!-- Report item -->
+    <string name="report_item_title">Report an Item</string>
+    <string name="report_item_description">Enter the item details below.</string>
+    <string name="submit_report">Submit Report</string>
+
 </resources>
