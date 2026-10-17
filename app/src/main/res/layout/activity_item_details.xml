@@ -44,6 +44,17 @@
             android:textSize="22sp"
             android:textStyle="bold" />
 
+        <ImageView
+            android:id="@+id/imgItemPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#F7EEEE"
+            android:contentDescription="Uploaded item photo"
+            android:scaleType="fitCenter"
+            android:visibility="gone" />
+
         <TextView
             android:id="@+id/tvDescription"
             android:layout_width="match_parent"

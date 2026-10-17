@@ -3,7 +3,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,9 +17,12 @@ public class FoundItemsActivity extends AppCompatActivity {
     TextView tv3;
     Button bt1;
     DBHelper db;
+
     ArrayList<String> list;
     ArrayList<Integer> ids;
-    ArrayAdapter<String> adapter;
+    ArrayList<String> imageUris;
+
+    ItemListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,15 +34,12 @@ public class FoundItemsActivity extends AppCompatActivity {
         bt1 = findViewById(R.id.bt1);
 
         db = new DBHelper(this);
+
         list = new ArrayList<>();
         ids = new ArrayList<>();
+        imageUris = new ArrayList<>();
 
-        adapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_list_item_1,
-                list
-        );
-
+        adapter = new ItemListAdapter(this, list, imageUris);
         lv1.setAdapter(adapter);
 
         bt1.setOnClickListener(v -> finish());
@@ -68,30 +67,41 @@ public class FoundItemsActivity extends AppCompatActivity {
     }
 
     private void loadItems() {
+
         list.clear();
         ids.clear();
+        imageUris.clear();
 
         SQLiteDatabase database = db.getReadableDatabase();
 
         Cursor c = database.rawQuery(
-                "SELECT id, item_name, category, location, status " +
+                "SELECT id, item_name, category, location, status, image_uri " +
                         "FROM Items WHERE type=? ORDER BY id DESC",
                 new String[]{"Found"}
         );
 
         try {
             while (c.moveToNext()) {
+
                 int id = c.getInt(0);
                 String name = c.getString(1);
                 String category = c.getString(2);
                 String location = c.getString(3);
                 String status = c.getString(4);
+                String imageUri = c.getString(5);
+
+                if (status == null || status.isEmpty()) {
+                    status = "Pending";
+                }
 
                 ids.add(id);
 
-                list.add(name + "\nCategory: " + category
+                list.add(name
+                        + "\nCategory: " + category
                         + "\nLocation: " + location
                         + "\nStatus: " + status);
+
+                imageUris.add(imageUri);
             }
         } finally {
             c.close();
