@@ -1,9 +1,27 @@
-<resources>
-    <!-- Base application theme. -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
     <style name="Base.Theme.LostNFound" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- NMIMS maroon theme -->
+        <item name="colorPrimary">@color/nmims_red</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/nmims_light_red</item>
+        <item name="colorOnPrimaryContainer">@color/nmims_dark_red</item>
+
+        <!-- Secondary theme colours -->
+        <item name="colorSecondary">@color/nmims_dark_red</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondaryContainer">@color/nmims_light_red</item>
+        <item name="colorOnSecondaryContainer">@color/nmims_dark_red</item>
+
+        <!-- Screen and text colours -->
+        <item name="android:colorAccent">@color/nmims_red</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:statusBarColor">@color/nmims_dark_red</item>
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
     </style>
 
     <style name="Theme.LostNFound" parent="Base.Theme.LostNFound" />
+
 </resources>

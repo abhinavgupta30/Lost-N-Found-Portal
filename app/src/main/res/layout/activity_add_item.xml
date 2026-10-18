@@ -35,100 +35,197 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/add_item_subtitle"
+            android:text="Provide the details below to report a lost or found item."
             android:textColor="@color/gray"
             android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="Item Name"
+            android:textColor="@color/dark_text"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/etItemName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:hint="@string/item_name_hint"
-            android:inputType="textCapSentences" />
-
-        <EditText
-            android:id="@+id/etItemDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/description_hint"
-            android:gravity="top"
-            android:minLines="3"
-            android:inputType="textCapSentences|textMultiLine" />
+            android:minHeight="52dp"
+            android:hint="Enter item name"
+            android:inputType="textCapSentences"
+            android:singleLine="true" />
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Description"
+            android:textColor="@color/dark_text"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etDescription"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="top"
+            android:hint="Describe the item"
+            android:inputType="textCapSentences|textMultiLine"
+            android:padding="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Category"
+            android:textColor="@color/dark_text"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spCategory"
+            android:layout_width="match_parent"
+            android:layout_height="52dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Location"
+            android:textColor="@color/dark_text"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etLocation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/item_type_label"
+            android:minHeight="52dp"
+            android:hint="Where was it lost or found?"
+            android:inputType="textCapSentences"
+            android:singleLine="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Date"
             android:textColor="@color/dark_text"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnDate"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Select Date"
+            android:textAllCaps="false"
+            android:textColor="@color/nmims_red"
+            android:backgroundTint="#F7EEEE" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="Item Photo (Optional)"
+            android:textColor="@color/dark_text"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imgItemPreview"
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:layout_marginTop="10dp"
+            android:background="#F7EEEE"
+            android:contentDescription="Selected item photo"
+            android:scaleType="centerInside"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btnChooseImage"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="8dp"
+            android:text="Choose Item Photo"
+            android:textAllCaps="false"
+            android:textColor="@color/nmims_red"
+            android:backgroundTint="#F7EEEE" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Type"
+            android:textColor="@color/dark_text"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <RadioGroup
-            android:id="@+id/rgItemType"
+            android:id="@+id/radioGroupType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/rbLost"
+                android:id="@+id/radioLost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/type_lost" />
+                android:text="Lost"
+                android:textColor="@color/dark_text"
+                android:buttonTint="@color/nmims_red" />
 
             <RadioButton
-                android:id="@+id/rbFound"
+                android:id="@+id/radioFound"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:text="@string/type_found" />
+                android:layout_marginStart="30dp"
+                android:text="Found"
+                android:textColor="@color/dark_text"
+                android:buttonTint="@color/nmims_red" />
         </RadioGroup>
 
-        <EditText
-            android:id="@+id/etItemCategory"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/category_hint"
-            android:inputType="textCapSentences" />
+            android:layout_marginTop="16dp"
+            android:text="Contact Number"
+            android:textColor="@color/dark_text"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/etItemLocation"
+            android:id="@+id/etContact"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/location_hint"
-            android:inputType="textCapSentences" />
-
-        <EditText
-            android:id="@+id/etItemDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/date_hint"
-            android:inputType="date" />
-
-        <EditText
-            android:id="@+id/etItemContact"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/contact_hint"
-            android:inputType="text" />
+            android:minHeight="52dp"
+            android:hint="Enter contact number"
+            android:inputType="phone"
+            android:singleLine="true"
+            android:padding="12dp" />
 
         <Button
-            android:id="@+id/btnSubmitItem"
+            android:id="@+id/btnSubmit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="12dp"
             android:backgroundTint="@color/nmims_red"
-            android:text="@string/submit_item"
-            android:textColor="@color/white" />
+            android:text="Submit Report"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnCancelItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/cancel" />
+            android:text="@string/cancel"
+            android:textAllCaps="false" />
 
     </LinearLayout>
-
 </ScrollView>

@@ -8,15 +8,34 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Button btnLostItems, btnFoundItems, btnReportItem, btnSearchItems;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnReportItem = findViewById(R.id.btnReportItem);
-        Button btnAcknowledgeFound = findViewById(R.id.btnAcknowledgeFound);
+        btnLostItems = findViewById(R.id.btnLostItems);
+        btnFoundItems = findViewById(R.id.btnFoundItems);
+        btnReportItem = findViewById(R.id.btnReportItem);
+        btnSearchItems = findViewById(R.id.btnSearchItems);
 
-        // Open Report Lost Item screen
+        btnLostItems.setOnClickListener(v -> {
+            Intent intent = new Intent(
+                    MainActivity.this,
+                    LostItemsActivity.class
+            );
+            startActivity(intent);
+        });
+
+        btnFoundItems.setOnClickListener(v -> {
+            Intent intent = new Intent(
+                    MainActivity.this,
+                    FoundItemsActivity.class
+            );
+            startActivity(intent);
+        });
+
         btnReportItem.setOnClickListener(v -> {
             Intent intent = new Intent(
                     MainActivity.this,
@@ -25,11 +44,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // Open Found Items screen
-        btnAcknowledgeFound.setOnClickListener(v -> {
+        btnSearchItems.setOnClickListener(v -> {
             Intent intent = new Intent(
                     MainActivity.this,
-                    FoundItemsActivity.class
+                    SearchActivity.class
             );
             startActivity(intent);
         });

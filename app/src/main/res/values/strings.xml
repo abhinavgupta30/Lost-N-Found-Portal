@@ -1,5 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- App name -->
     <string name="app_name">Lost N Found</string>
+
+    <!-- Navigation & Auth Strings -->
     <string name="main_title">LOST N FOUND</string>
     <string name="welcome_title">Welcome!</string>
     <string name="welcome_subtitle">Lost something on campus? Find it here or report an item.</string>
@@ -14,6 +19,8 @@
     <string name="nmims_shirpur_logo">NMIMS Shirpur Logo</string>
     <string name="splash_title">Lost &amp; Found</string>
     <string name="splash_tagline">Find. Return. Reunite.</string>
+
+    <!-- Admin Dashboard -->
     <string name="admin_welcome">Welcome, Administrator!</string>
     <string name="admin_dashboard_title">Admin Dashboard</string>
     <string name="nmims_shirpur_header">NMIMS SHIRPUR</string>
@@ -21,6 +28,8 @@
     <string name="manage_items">Manage Items</string>
     <string name="manage_users">Manage Users</string>
     <string name="logout">Logout</string>
+
+    <!-- Form & Item Entry -->
     <string name="add_item_subtitle">Enter the details of the lost or found item.</string>
     <string name="item_name_hint">Item name</string>
     <string name="description_hint">Description</string>
@@ -33,9 +42,51 @@
     <string name="contact_hint">Contact number or email</string>
     <string name="submit_item">Submit Item</string>
     <string name="cancel">Cancel</string>
+
+    <!-- Found Items List -->
     <string name="found_items_title">Acknowledge Found Item</string>
     <string name="found_items_coming_soon">Found items screen coming soon.</string>
     <string name="found_items_instruction">Select an item that you believe belongs to you.</string>
     <string name="no_found_items">No found items available right now.</string>
     <string name="back">Back</string>
+
+    <!-- Main Dashboard -->
+    <string name="dashboard_title">NMIMS SHIRPUR</string>
+    <string name="dashboard_heading">Lost N Found Portal</string>
+    <string name="dashboard_tagline">Find what is lost. Return what is found.</string>
+    <string name="dashboard_prompt">What would you like to do?</string>
+    <string name="lost_items_button">View Lost Items</string>
+    <string name="found_items_button">View Found Items</string>
+    <string name="report_item_button">Report an Item</string>
+    <string name="search_items_button">Search Items</string>
+
+    <!-- Search -->
+    <string name="search_title">SEARCH ITEMS</string>
+    <string name="enter_item_name">Enter Item Name</string>
+    <string name="search_hint">Example: Wallet, Phone, ID Card</string>
+    <string name="select_category">Select Category</string>
+    <string name="search_button">Search</string>
+    <string name="no_matching_items">No matching items found.</string>
+
+    <!-- Item details -->
+    <string name="item_details_title">Item Details</string>
+    <string name="item_name_label">Item Name</string>
+    <string name="description_label">Description</string>
+    <string name="category_label">Category</string>
+    <string name="location_label">Location</string>
+    <string name="date_label">Date</string>
+    <string name="type_label">Type</string>
+    <string name="contact_label">Contact</string>
+    <string name="status_label">Status</string>
+
+    <!-- Common buttons -->
+    <string name="back_button">Back</string>
+    <string name="back_to_home">Back to Home</string>
+    <string name="mark_resolved">Mark Resolved</string>
+
+    <!-- Report item -->
+    <string name="report_item_title">Report an Item</string>
+    <string name="report_item_description">Enter the item details below.</string>
+    <string name="submit_report">Submit Report</string>
+
 </resources>

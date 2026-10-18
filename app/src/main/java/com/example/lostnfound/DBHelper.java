@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "LostFound.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -34,7 +34,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 "date TEXT," +
                 "type TEXT," +
                 "contact TEXT," +
-                "status TEXT)");
+                "status TEXT," +
+                "image_uri TEXT)");
     }
 
     @Override
@@ -43,6 +44,11 @@ public class DBHelper extends SQLiteOpenHelper {
         if (oldVersion < 2) {
             db.execSQL(
                     "ALTER TABLE Users ADD COLUMN role TEXT DEFAULT 'user'"
+            );
+        }
+        if (oldVersion < 3) {
+            db.execSQL(
+                    "ALTER TABLE Items ADD COLUMN image_uri TEXT"
             );
         }
     }

@@ -38,7 +38,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="28dp"
             android:text="@string/welcome_title"
             android:textColor="@color/dark_text"
             android:textSize="28sp"
@@ -48,33 +48,58 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:gravity="center"
             android:text="@string/welcome_portal_subtitle"
             android:textColor="@color/gray"
             android:textSize="16sp" />
 
-        <!-- Report Lost Item -->
+        <!-- View Lost Items -->
         <Button
-            android:id="@+id/btnReportItem"
+            android:id="@+id/btnLostItems"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:padding="14dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="32dp"
             android:backgroundTint="@color/nmims_red"
-            android:text="@string/report_lost_item"
+            android:text="@string/view_lost_items"
+            android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp" />
 
-        <!-- Acknowledge Found Item -->
+        <!-- View Found Items -->
         <Button
-            android:id="@+id/btnAcknowledgeFound"
+            android:id="@+id/btnFoundItems"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:padding="14dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="14dp"
             android:backgroundTint="@color/nmims_red"
-            android:text="@string/acknowledge_found_item"
+            android:text="@string/view_found_items"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <!-- Report an Item -->
+        <Button
+            android:id="@+id/btnReportItem"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="14dp"
+            android:backgroundTint="@color/nmims_dark_red"
+            android:text="@string/report_an_item"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <!-- Search Items -->
+        <Button
+            android:id="@+id/btnSearchItems"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="@color/nmims_red"
+            android:text="@string/search_items_button"
+            android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp" />
 

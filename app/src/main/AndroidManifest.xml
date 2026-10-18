@@ -15,12 +15,10 @@
         <activity
             android:name=".SplashActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
         <!-- Student Home Screen -->
@@ -50,10 +48,26 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
-        <!-- Found Items Screen -->
+        <!-- Lost and Found Items -->
+        <activity
+            android:name=".LostItemsActivity"
+            android:exported="false" />
+
         <activity
             android:name=".FoundItemsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Item Details -->
+        <activity
+            android:name=".ItemDetailsActivity"
             android:exported="false" />
+
+        <!-- Search Items -->
+        <activity
+            android:name=".SearchActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
 
     </application>
 
