@@ -1,103 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#FFFFFF">
-
-    <TextView
-        android:id="@+id/tv1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="NMIMS SHIRPUR"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        android:gravity="center"
-        android:background="#8F2424"
-        android:padding="24dp" />
+    android:background="@color/white"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:padding="24dp">
+        android:padding="24dp"
+        android:gravity="center_horizontal">
 
+        <!-- NMIMS Logo -->
+        <ImageView
+            android:layout_width="180dp"
+            android:layout_height="110dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/logonmims"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/nmims_shirpur_logo" />
+
+        <!-- Main Heading -->
         <TextView
-            android:id="@+id/tv2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lost N Found Portal"
+            android:background="@color/nmims_red"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="@string/main_title"
+            android:textColor="@color/white"
             android:textSize="26sp"
-            android:textStyle="bold"
-            android:textColor="#8F2424"
-            android:gravity="center"
-            android:layout_marginTop="20dp" />
+            android:textStyle="bold" />
 
+        <!-- Welcome Heading -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="@string/welcome_title"
+            android:textColor="@color/dark_text"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <!-- Subtitle -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Find what is lost. Return what is found."
-            android:textSize="15sp"
-            android:textColor="#555555"
+            android:layout_marginTop="8dp"
             android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="28dp" />
+            android:text="@string/welcome_portal_subtitle"
+            android:textColor="@color/gray"
+            android:textSize="16sp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="What would you like to do?"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="#292929"
-            android:layout_marginBottom="16dp" />
-
+        <!-- View Lost Items -->
         <Button
             android:id="@+id/btnLostItems"
             android:layout_width="match_parent"
             android:layout_height="54dp"
-            android:text="View Lost Items"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="@color/nmims_red"
+            android:text="@string/view_lost_items"
             android:textAllCaps="false"
-            android:backgroundTint="#8F2424" />
+            android:textColor="@color/white"
+            android:textSize="16sp" />
 
+        <!-- View Found Items -->
         <Button
             android:id="@+id/btnFoundItems"
             android:layout_width="match_parent"
             android:layout_height="54dp"
-            android:layout_marginTop="12dp"
-            android:text="View Found Items"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
+            android:layout_marginTop="14dp"
+            android:backgroundTint="@color/nmims_red"
+            android:text="@string/view_found_items"
             android:textAllCaps="false"
-            android:backgroundTint="#8F2424" />
+            android:textColor="@color/white"
+            android:textSize="16sp" />
 
+        <!-- Report an Item -->
         <Button
             android:id="@+id/btnReportItem"
             android:layout_width="match_parent"
             android:layout_height="54dp"
-            android:layout_marginTop="12dp"
-            android:text="Report an Item"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
+            android:layout_marginTop="14dp"
+            android:backgroundTint="@color/nmims_dark_red"
+            android:text="@string/report_an_item"
             android:textAllCaps="false"
-            android:backgroundTint="#701B1B" />
+            android:textColor="@color/white"
+            android:textSize="16sp" />
 
+        <!-- Search Items -->
         <Button
             android:id="@+id/btnSearchItems"
             android:layout_width="match_parent"
             android:layout_height="54dp"
-            android:layout_marginTop="12dp"
-            android:text="Search Items"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="@color/nmims_red"
+            android:text="@string/search_items_button"
             android:textAllCaps="false"
-            android:backgroundTint="#8F2424" />
+            android:textColor="@color/white"
+            android:textSize="16sp" />
 
     </LinearLayout>
 
-</LinearLayout>
+</ScrollView>

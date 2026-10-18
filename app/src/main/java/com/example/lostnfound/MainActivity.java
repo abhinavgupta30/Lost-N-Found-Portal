@@ -1,4 +1,5 @@
 package com.example.lostnfound;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -7,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnLostItems, btnFoundItems, btnReportItem, btnSearchItems;
+    private Button btnLostItems, btnFoundItems, btnReportItem, btnSearchItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,35 +21,35 @@ public class MainActivity extends AppCompatActivity {
         btnSearchItems = findViewById(R.id.btnSearchItems);
 
         btnLostItems.setOnClickListener(v -> {
-            Intent i = new Intent(
+            Intent intent = new Intent(
                     MainActivity.this,
                     LostItemsActivity.class
             );
-            startActivity(i);
+            startActivity(intent);
         });
 
         btnFoundItems.setOnClickListener(v -> {
-            Intent i = new Intent(
+            Intent intent = new Intent(
                     MainActivity.this,
                     FoundItemsActivity.class
             );
-            startActivity(i);
+            startActivity(intent);
         });
 
         btnReportItem.setOnClickListener(v -> {
-            Intent i = new Intent(
+            Intent intent = new Intent(
                     MainActivity.this,
                     AddItemActivity.class
             );
-            startActivity(i);
+            startActivity(intent);
         });
 
         btnSearchItems.setOnClickListener(v -> {
-            Intent i = new Intent(
+            Intent intent = new Intent(
                     MainActivity.this,
                     SearchActivity.class
             );
-            startActivity(i);
+            startActivity(intent);
         });
     }
 }

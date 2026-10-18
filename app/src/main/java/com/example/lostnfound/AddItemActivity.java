@@ -1,4 +1,6 @@
+
 package com.example.lostnfound;
+
 import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,9 +14,11 @@ import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
+
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -26,7 +30,7 @@ public class AddItemActivity extends AppCompatActivity {
 
     EditText etItemName, etDescription, etLocation, etContact;
     Spinner spCategory;
-    Button btnDate, btnSubmit, btnChooseImage;
+    Button btnDate, btnSubmit, btnCancelItem, btnChooseImage;
     ImageView imgItemPreview;
     RadioGroup radioGroupType;
 
@@ -67,6 +71,7 @@ public class AddItemActivity extends AppCompatActivity {
         spCategory = findViewById(R.id.spCategory);
         btnDate = findViewById(R.id.btnDate);
         btnSubmit = findViewById(R.id.btnSubmit);
+        btnCancelItem = findViewById(R.id.btnCancelItem);
         btnChooseImage = findViewById(R.id.btnChooseImage);
         imgItemPreview = findViewById(R.id.imgItemPreview);
         radioGroupType = findViewById(R.id.radioGroupType);
@@ -105,12 +110,11 @@ public class AddItemActivity extends AppCompatActivity {
         );
 
         btnChooseImage.setOnClickListener(v -> openPhotoSource());
-
         btnSubmit.setOnClickListener(v -> saveItem());
+        btnCancelItem.setOnClickListener(v -> finish());
     }
 
     private void updatePhotoButton() {
-
         int selectedType = radioGroupType.getCheckedRadioButtonId();
 
         if (selectedType == R.id.radioFound) {
@@ -123,7 +127,6 @@ public class AddItemActivity extends AppCompatActivity {
     }
 
     private void openPhotoSource() {
-
         int selectedType = radioGroupType.getCheckedRadioButtonId();
 
         if (selectedType == R.id.radioFound) {
@@ -140,12 +143,11 @@ public class AddItemActivity extends AppCompatActivity {
     }
 
     private void copyGalleryImage(Uri uri) {
-
         try {
             File folder = new File(getFilesDir(), "item_photos");
 
-            if (!folder.exists()) {
-                folder.mkdirs();
+            if (!folder.exists() && !folder.mkdirs()) {
+                throw new Exception("Unable to create photo folder");
             }
 
             File photoFile = new File(
@@ -157,8 +159,11 @@ public class AddItemActivity extends AppCompatActivity {
                     getContentResolver().openInputStream(uri);
 
             if (inputStream == null) {
-                Toast.makeText(this, "Unable to open selected photo",
-                        Toast.LENGTH_SHORT).show();
+                Toast.makeText(
+                        this,
+                        "Unable to open selected photo",
+                        Toast.LENGTH_SHORT
+                ).show();
                 return;
             }
 
@@ -177,18 +182,20 @@ public class AddItemActivity extends AppCompatActivity {
             showPhoto(Uri.parse(imageUri));
 
         } catch (Exception e) {
-            Toast.makeText(this, "Unable to save selected photo",
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(
+                    this,
+                    "Unable to save selected photo",
+                    Toast.LENGTH_SHORT
+            ).show();
         }
     }
 
     private void saveCameraImage(Bitmap bitmap) {
-
         try {
             File folder = new File(getFilesDir(), "item_photos");
 
-            if (!folder.exists()) {
-                folder.mkdirs();
+            if (!folder.exists() && !folder.mkdirs()) {
+                throw new Exception("Unable to create photo folder");
             }
 
             File photoFile = new File(
@@ -198,7 +205,6 @@ public class AddItemActivity extends AppCompatActivity {
 
             try (FileOutputStream output =
                          new FileOutputStream(photoFile)) {
-
                 bitmap.compress(
                         Bitmap.CompressFormat.JPEG,
                         90,
@@ -210,8 +216,11 @@ public class AddItemActivity extends AppCompatActivity {
             showPhoto(Uri.parse(imageUri));
 
         } catch (Exception e) {
-            Toast.makeText(this, "Unable to save camera photo",
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(
+                    this,
+                    "Unable to save camera photo",
+                    Toast.LENGTH_SHORT
+            ).show();
         }
     }
 
@@ -221,7 +230,6 @@ public class AddItemActivity extends AppCompatActivity {
     }
 
     private void selectDate() {
-
         Calendar calendar = Calendar.getInstance();
 
         DatePickerDialog dialog = new DatePickerDialog(
@@ -246,7 +254,6 @@ public class AddItemActivity extends AppCompatActivity {
     }
 
     private void saveItem() {
-
         String name = etItemName.getText().toString().trim();
         String description = etDescription.getText().toString().trim();
         String location = etLocation.getText().toString().trim();
@@ -254,25 +261,33 @@ public class AddItemActivity extends AppCompatActivity {
 
         if (name.isEmpty() || description.isEmpty()
                 || location.isEmpty() || contact.isEmpty()) {
-            Toast.makeText(this, "Please fill all fields",
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(
+                    this,
+                    "Please fill all fields",
+                    Toast.LENGTH_SHORT
+            ).show();
             return;
         }
 
         if (spCategory.getSelectedItemPosition() == 0) {
-            Toast.makeText(this, "Please select a category",
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(
+                    this,
+                    "Please select a category",
+                    Toast.LENGTH_SHORT
+            ).show();
             return;
         }
 
         if (date.isEmpty()) {
-            Toast.makeText(this, "Please select a date",
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(
+                    this,
+                    "Please select a date",
+                    Toast.LENGTH_SHORT
+            ).show();
             return;
         }
 
         int selectedType = radioGroupType.getCheckedRadioButtonId();
-
         String type;
 
         if (selectedType == R.id.radioLost) {
@@ -280,8 +295,11 @@ public class AddItemActivity extends AppCompatActivity {
         } else if (selectedType == R.id.radioFound) {
             type = "Found";
         } else {
-            Toast.makeText(this, "Please select Lost or Found",
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(
+                    this,
+                    "Please select Lost or Found",
+                    Toast.LENGTH_SHORT
+            ).show();
             return;
         }
 
@@ -312,12 +330,18 @@ public class AddItemActivity extends AppCompatActivity {
         }
 
         if (result != -1) {
-            Toast.makeText(this, "Item reported successfully!",
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(
+                    this,
+                    "Item reported successfully!",
+                    Toast.LENGTH_SHORT
+            ).show();
             finish();
         } else {
-            Toast.makeText(this, "Failed to save item",
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(
+                    this,
+                    "Failed to save item",
+                    Toast.LENGTH_SHORT
+            ).show();
         }
     }
 }

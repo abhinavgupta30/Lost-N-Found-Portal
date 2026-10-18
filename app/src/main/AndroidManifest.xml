@@ -11,20 +11,44 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LostNFound">
 
+        <!-- Splash Screen: App entry point -->
         <activity
-            android:name=".ItemDetailsActivity"
-            android:exported="false" />
+            android:name=".SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
+        <!-- Student Home Screen -->
         <activity
-            android:name=".SearchActivity"
+            android:name=".MainActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
+        <!-- Login Screen -->
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+
+        <!-- Registration Screen -->
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+
+        <!-- Admin Dashboard -->
+        <activity
+            android:name=".AdminDashboardActivity"
+            android:exported="false" />
+
+        <!-- Add Item Screen -->
         <activity
             android:name=".AddItemActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
+        <!-- Lost and Found Items -->
         <activity
             android:name=".LostItemsActivity"
             android:exported="false" />
@@ -34,17 +58,16 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
+        <!-- Item Details -->
         <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize">
+            android:name=".ItemDetailsActivity"
+            android:exported="false" />
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
+        <!-- Search Items -->
+        <activity
+            android:name=".SearchActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
 
     </application>
 

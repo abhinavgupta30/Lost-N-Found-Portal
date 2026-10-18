@@ -2,43 +2,51 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/white"
     android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="22dp">
+        android:padding="20dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Report an Item"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:textColor="#8F2424"
+            android:background="@color/nmims_red"
             android:gravity="center"
-            android:layout_marginTop="12dp" />
+            android:padding="18dp"
+            android:text="@string/nmims_shirpur_header"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Provide the details below to report a lost or found item."
-            android:textSize="14sp"
-            android:textColor="#666666"
-            android:gravity="center"
+            android:layout_marginTop="24dp"
+            android:text="@string/report_an_item"
+            android:textColor="@color/nmims_red"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="22dp" />
+            android:text="Provide the details below to report a lost or found item."
+            android:textColor="@color/gray"
+            android:textSize="14sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
             android:text="Item Name"
+            android:textColor="@color/dark_text"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="#292929"
-            android:layout_marginTop="8dp" />
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/etItemName"
@@ -46,20 +54,17 @@
             android:layout_height="wrap_content"
             android:minHeight="52dp"
             android:hint="Enter item name"
-            android:singleLine="true"
-            android:padding="12dp"
-            android:textColor="#292929"
-            android:textColorHint="#888888"
-            android:backgroundTint="#8F2424" />
+            android:inputType="textCapSentences"
+            android:singleLine="true" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="Description"
+            android:textColor="@color/dark_text"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="#292929"
-            android:layout_marginTop="16dp" />
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/etDescription"
@@ -67,34 +72,31 @@
             android:layout_height="100dp"
             android:gravity="top"
             android:hint="Describe the item"
-            android:padding="12dp"
-            android:textColor="#292929"
-            android:textColorHint="#888888"
-            android:backgroundTint="#8F2424" />
+            android:inputType="textCapSentences|textMultiLine"
+            android:padding="12dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="Category"
+            android:textColor="@color/dark_text"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="#292929"
-            android:layout_marginTop="16dp" />
+            android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/spCategory"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:backgroundTint="#8F2424" />
+            android:layout_height="52dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="Location"
+            android:textColor="@color/dark_text"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="#292929"
-            android:layout_marginTop="16dp" />
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/etLocation"
@@ -102,40 +104,35 @@
             android:layout_height="wrap_content"
             android:minHeight="52dp"
             android:hint="Where was it lost or found?"
-            android:singleLine="true"
-            android:padding="12dp"
-            android:textColor="#292929"
-            android:textColorHint="#888888"
-            android:backgroundTint="#8F2424" />
+            android:inputType="textCapSentences"
+            android:singleLine="true" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="Date"
+            android:textColor="@color/dark_text"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="#292929"
-            android:layout_marginTop="16dp" />
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnDate"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="Select Date"
-            android:textSize="15sp"
             android:textAllCaps="false"
-            android:textColor="#8F2424"
+            android:textColor="@color/nmims_red"
             android:backgroundTint="#F7EEEE" />
 
-        <!-- Item photo selection -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
             android:text="Item Photo (Optional)"
+            android:textColor="@color/dark_text"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="#292929"
-            android:layout_marginTop="18dp" />
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/imgItemPreview"
@@ -143,8 +140,8 @@
             android:layout_height="190dp"
             android:layout_marginTop="10dp"
             android:background="#F7EEEE"
-            android:scaleType="centerInside"
             android:contentDescription="Selected item photo"
+            android:scaleType="centerInside"
             android:visibility="gone" />
 
         <Button
@@ -153,19 +150,18 @@
             android:layout_height="52dp"
             android:layout_marginTop="8dp"
             android:text="Choose Item Photo"
-            android:textSize="15sp"
             android:textAllCaps="false"
-            android:textColor="#8F2424"
+            android:textColor="@color/nmims_red"
             android:backgroundTint="#F7EEEE" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="Type"
+            android:textColor="@color/dark_text"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="#292929"
-            android:layout_marginTop="16dp" />
+            android:textStyle="bold" />
 
         <RadioGroup
             android:id="@+id/radioGroupType"
@@ -178,28 +174,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Lost"
-                android:textColor="#292929"
-                android:buttonTint="#8F2424" />
+                android:textColor="@color/dark_text"
+                android:buttonTint="@color/nmims_red" />
 
             <RadioButton
                 android:id="@+id/radioFound"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
                 android:text="Found"
-                android:textColor="#292929"
-                android:buttonTint="#8F2424"
-                android:layout_marginStart="30dp" />
-
+                android:textColor="@color/dark_text"
+                android:buttonTint="@color/nmims_red" />
         </RadioGroup>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="Contact Number"
+            android:textColor="@color/dark_text"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="#292929"
-            android:layout_marginTop="16dp" />
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/etContact"
@@ -209,24 +204,28 @@
             android:hint="Enter contact number"
             android:inputType="phone"
             android:singleLine="true"
-            android:padding="12dp"
-            android:textColor="#292929"
-            android:textColorHint="#888888"
-            android:backgroundTint="#8F2424" />
+            android:padding="12dp" />
 
         <Button
             android:id="@+id/btnSubmit"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:text="Submit Report"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="#8F2424"
             android:layout_marginTop="28dp"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@color/nmims_red"
+            android:text="Submit Report"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnCancelItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/cancel"
+            android:textAllCaps="false" />
 
     </LinearLayout>
-
 </ScrollView>

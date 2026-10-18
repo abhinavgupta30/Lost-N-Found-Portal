@@ -1,8 +1,11 @@
+
 package com.example.lostnfound;
+
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -16,8 +19,8 @@ public class FoundItemsActivity extends AppCompatActivity {
     ListView lv1;
     TextView tv3;
     Button bt1;
-    DBHelper db;
 
+    DBHelper db;
     ArrayList<String> list;
     ArrayList<Integer> ids;
     ArrayList<String> imageUris;
@@ -67,34 +70,32 @@ public class FoundItemsActivity extends AppCompatActivity {
     }
 
     private void loadItems() {
-
         list.clear();
         ids.clear();
         imageUris.clear();
 
         SQLiteDatabase database = db.getReadableDatabase();
 
-        Cursor c = database.rawQuery(
+        Cursor cursor = database.rawQuery(
                 "SELECT id, item_name, category, location, status, image_uri " +
                         "FROM Items WHERE type=? ORDER BY id DESC",
                 new String[]{"Found"}
         );
 
         try {
-            while (c.moveToNext()) {
-
-                int id = c.getInt(0);
-                String name = c.getString(1);
-                String category = c.getString(2);
-                String location = c.getString(3);
-                String status = c.getString(4);
-                String imageUri = c.getString(5);
+            while (cursor.moveToNext()) {
+                int itemId = cursor.getInt(0);
+                String name = cursor.getString(1);
+                String category = cursor.getString(2);
+                String location = cursor.getString(3);
+                String status = cursor.getString(4);
+                String imageUri = cursor.getString(5);
 
                 if (status == null || status.isEmpty()) {
                     status = "Pending";
                 }
 
-                ids.add(id);
+                ids.add(itemId);
 
                 list.add(name
                         + "\nCategory: " + category
@@ -104,18 +105,19 @@ public class FoundItemsActivity extends AppCompatActivity {
                 imageUris.add(imageUri);
             }
         } finally {
-            c.close();
+            cursor.close();
             database.close();
         }
 
         adapter.notifyDataSetChanged();
 
         if (list.isEmpty()) {
-            tv3.setVisibility(TextView.VISIBLE);
-            lv1.setVisibility(ListView.GONE);
+            tv3.setText(R.string.no_found_items);
+            tv3.setVisibility(View.VISIBLE);
+            lv1.setVisibility(View.GONE);
         } else {
-            tv3.setVisibility(TextView.GONE);
-            lv1.setVisibility(ListView.VISIBLE);
+            tv3.setVisibility(View.GONE);
+            lv1.setVisibility(View.VISIBLE);
         }
     }
 }
