@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     android:background="@drawable/campus">
 
-    <!-- Dark overlay for better text visibility -->
+
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#66000000" />
 
-    <!-- NMIMS Logo -->
+
     <ImageView
         android:id="@+id/imgLogo"
         android:layout_width="190dp"
@@ -25,7 +25,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- App Title -->
+
     <TextView
         android:id="@+id/txtTitle"
         android:layout_width="wrap_content"
@@ -42,7 +42,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Tagline -->
+
     <TextView
         android:id="@+id/txtTagline"
         android:layout_width="wrap_content"

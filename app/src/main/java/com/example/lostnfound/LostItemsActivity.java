@@ -1,4 +1,5 @@
 package com.example.lostnfound;
+
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -46,6 +47,7 @@ public class LostItemsActivity extends AppCompatActivity {
 
         lv1.setOnItemClickListener((parent, view, position, id) -> {
             int itemId = ids.get(position);
+            boolean isAdmin = getIntent().getBooleanExtra("isAdmin", false);
 
             Intent intent = new Intent(
                     LostItemsActivity.this,
@@ -53,6 +55,7 @@ public class LostItemsActivity extends AppCompatActivity {
             );
 
             intent.putExtra("itemId", itemId);
+            intent.putExtra("isAdmin", isAdmin);
             startActivity(intent);
         });
     }

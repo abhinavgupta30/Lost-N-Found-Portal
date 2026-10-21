@@ -1,4 +1,3 @@
-
 package com.example.lostnfound;
 
 import android.content.Intent;
@@ -49,6 +48,7 @@ public class FoundItemsActivity extends AppCompatActivity {
 
         lv1.setOnItemClickListener((parent, view, position, id) -> {
             int itemId = ids.get(position);
+            boolean isAdmin = getIntent().getBooleanExtra("isAdmin", false);
 
             Intent intent = new Intent(
                     FoundItemsActivity.this,
@@ -56,6 +56,7 @@ public class FoundItemsActivity extends AppCompatActivity {
             );
 
             intent.putExtra("itemId", itemId);
+            intent.putExtra("isAdmin", isAdmin);
             startActivity(intent);
         });
     }

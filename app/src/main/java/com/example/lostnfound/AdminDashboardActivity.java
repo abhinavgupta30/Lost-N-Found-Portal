@@ -22,15 +22,22 @@ public class AdminDashboardActivity extends AppCompatActivity {
 
         tvAdminWelcome.setText(R.string.admin_welcome);
 
-        btnManageItems.setOnClickListener(v ->
-                Toast.makeText(this,
-                        "Item management will be added next",
-                        Toast.LENGTH_SHORT).show());
+        btnManageItems.setOnClickListener(v -> {
+            Intent intent = new Intent(
+                    AdminDashboardActivity.this,
+                    MainActivity.class
+            );
+            intent.putExtra("isAdmin", true);
+            startActivity(intent);
+        });
 
-        btnManageUsers.setOnClickListener(v ->
-                Toast.makeText(this,
-                        "User management will be added next",
-                        Toast.LENGTH_SHORT).show());
+        btnManageUsers.setOnClickListener(v -> {
+            DBHelper dbHelper = new DBHelper(this);
+            int userCount = dbHelper.getUserCount();
+            Toast.makeText(this,
+                    "Total registered users: " + userCount,
+                    Toast.LENGTH_SHORT).show();
+        });
 
         btnAdminLogout.setOnClickListener(v -> {
             Intent intent = new Intent(

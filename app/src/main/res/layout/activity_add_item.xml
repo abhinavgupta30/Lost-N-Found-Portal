@@ -3,7 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:focusableInTouchMode="true"
+    android:clipToPadding="false"
+    android:paddingBottom="16dp"
+    android:scrollbars="vertical"
+    android:overScrollMode="ifContentScrolls">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,6 +16,7 @@
         android:orientation="vertical"
         android:padding="20dp">
 
+        <!-- NMIMS Header -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,6 +28,7 @@
             android:textSize="22sp"
             android:textStyle="bold" />
 
+        <!-- Screen Title -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,6 +46,7 @@
             android:textColor="@color/gray"
             android:textSize="14sp" />
 
+        <!-- Item Name -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,6 +65,7 @@
             android:inputType="textCapSentences"
             android:singleLine="true" />
 
+        <!-- Description -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -75,6 +84,7 @@
             android:inputType="textCapSentences|textMultiLine"
             android:padding="12dp" />
 
+        <!-- Category -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -89,6 +99,7 @@
             android:layout_width="match_parent"
             android:layout_height="52dp" />
 
+        <!-- Location -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -107,6 +118,7 @@
             android:inputType="textCapSentences"
             android:singleLine="true" />
 
+        <!-- Date -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -125,6 +137,7 @@
             android:textColor="@color/nmims_red"
             android:backgroundTint="#F7EEEE" />
 
+        <!-- Item Photo -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -154,6 +167,7 @@
             android:textColor="@color/nmims_red"
             android:backgroundTint="#F7EEEE" />
 
+        <!-- Lost or Found -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -185,8 +199,10 @@
                 android:text="Found"
                 android:textColor="@color/dark_text"
                 android:buttonTint="@color/nmims_red" />
+
         </RadioGroup>
 
+        <!-- Contact Number -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -206,6 +222,7 @@
             android:singleLine="true"
             android:padding="12dp" />
 
+        <!-- Submit -->
         <Button
             android:id="@+id/btnSubmit"
             android:layout_width="match_parent"
@@ -219,13 +236,16 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
+        <!-- Cancel -->
         <Button
             android:id="@+id/btnCancelItem"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="52dp"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
             android:text="@string/cancel"
             android:textAllCaps="false" />
 
     </LinearLayout>
+
 </ScrollView>

@@ -24,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
 
         DBHelper dbHelper = new DBHelper(this);
 
-        // Create the demo admin account if it does not exist
+
         dbHelper.createAdminAccount();
 
         btnLogin.setOnClickListener(v -> {

@@ -20,11 +20,14 @@ public class MainActivity extends AppCompatActivity {
         btnReportItem = findViewById(R.id.btnReportItem);
         btnSearchItems = findViewById(R.id.btnSearchItems);
 
+        boolean isAdmin = getIntent().getBooleanExtra("isAdmin", false);
+
         btnLostItems.setOnClickListener(v -> {
             Intent intent = new Intent(
                     MainActivity.this,
                     LostItemsActivity.class
             );
+            intent.putExtra("isAdmin", isAdmin);
             startActivity(intent);
         });
 
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
                     MainActivity.this,
                     FoundItemsActivity.class
             );
+            intent.putExtra("isAdmin", isAdmin);
             startActivity(intent);
         });
 
@@ -41,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
                     MainActivity.this,
                     AddItemActivity.class
             );
+            intent.putExtra("isAdmin", isAdmin);
             startActivity(intent);
         });
 
@@ -49,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
                     MainActivity.this,
                     SearchActivity.class
             );
+            intent.putExtra("isAdmin", isAdmin);
             startActivity(intent);
         });
     }

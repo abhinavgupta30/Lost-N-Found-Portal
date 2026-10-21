@@ -1,9 +1,11 @@
 package com.example.lostnfound;
+
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,6 +22,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
 
     DBHelper db;
     int itemId;
+    boolean isAdmin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
         db = new DBHelper(this);
 
         itemId = getIntent().getIntExtra("itemId", -1);
+        isAdmin = getIntent().getBooleanExtra("isAdmin", false);
 
         if (itemId != -1) {
             loadItemDetails(itemId);
@@ -101,12 +105,17 @@ public class ItemDetailsActivity extends AppCompatActivity {
                     imgItemPhoto.setVisibility(ImageView.GONE);
                 }
 
-                if (status.equalsIgnoreCase("Resolved")) {
-                    btnResolve.setEnabled(false);
-                    btnResolve.setText("Already Resolved");
+                if (isAdmin) {
+                    btnResolve.setVisibility(View.VISIBLE);
+                    if (status.equalsIgnoreCase("Resolved")) {
+                        btnResolve.setEnabled(false);
+                        btnResolve.setText("Already Resolved");
+                    } else {
+                        btnResolve.setEnabled(true);
+                        btnResolve.setText("Mark Resolved");
+                    }
                 } else {
-                    btnResolve.setEnabled(true);
-                    btnResolve.setText("Mark Resolved");
+                    btnResolve.setVisibility(View.GONE);
                 }
 
             } else {
